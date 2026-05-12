@@ -186,22 +186,53 @@ function App() {
   </div>
 </section>
 
-        {/* HABILIDADES */}
-        <section id="habilidades" className="pt-10">
-          <h2 className="text-3xl font-bold mb-10 border-b border-slate-800 pb-4 text-blue-400">Habilidades Técnicas</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {habilidades.map((hab, i) => (
-              <div key={i} className="bg-slate-800/40 p-6 rounded-xl border border-slate-700/50">
-                <h3 className="text-blue-500 font-bold mb-4 uppercase tracking-widest text-xs">{hab.categoria}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {hab.items.map((item, idx) => (
-                    <span key={idx} className="text-slate-300 bg-slate-900 px-3 py-1 rounded-md text-sm border border-slate-700">{item}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
+  {/* HABILIDADES */}
+<section id="habilidades" className="pt-10">
+  <div className="flex items-center gap-4 mb-10">
+    <h2 className="text-3xl font-bold border-b border-slate-800 pb-4 text-blue-400">Habilidades Técnicas</h2>
+    <div className="h-[1px] flex-1 bg-slate-800 mt-2"></div>
+  </div>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {habilidades.map((hab, i) => (
+      <div key={i} className="skill-card bg-slate-800/40 p-8 rounded-2xl border border-slate-700/50 backdrop-blur-sm group">
+        <div className="flex items-center gap-3 mb-6">
+          {/* Icono dinámico según categoría */}
+          <div className="p-2 bg-blue-500/10 rounded-lg text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
+            {hab.categoria === "Desarrollo" ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+              </svg>
+            )}
           </div>
-        </section>
+          <h3 className="text-white font-bold uppercase tracking-[0.2em] text-sm">{hab.categoria}</h3>
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          {hab.items.map((item, idx) => (
+            <span 
+              key={idx} 
+              className="skill-tag text-slate-300 bg-slate-900/80 px-4 py-2 rounded-xl text-sm border border-slate-700 font-medium cursor-default"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+        
+        {/* Decoración de fondo */}
+        <div className="absolute -bottom-2 -right-2 text-blue-500/5 group-hover:text-blue-500/10 transition-colors pointer-events-none">
+          <svg className="h-24 w-24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
         {/* EXPERIENCIA */}
         <section id="experiencia" className="pt-10">

@@ -53,3 +53,27 @@ section {
     transform: rotateY(180deg) translateY(-8px);
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
 }
+
+/* Brillo para las habilidades */
+.skill-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skill-card:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .skill-tag {
+    transition: all 0.2s ease;
+  }
+  
+  .skill-tag:hover {
+    background: #3b82f6;
+    color: white;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+    transform: scale(1.1);
+  }
