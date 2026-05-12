@@ -5,7 +5,7 @@ import './index.css'
 import fotoPerfil from './assets/perfil.jpg'
 import imgMonopatines from './assets/monopatin.jpg'
 import imgAldesal from './assets/aldesal.jpg'
-import imgPortafolio from './assets/portafolio.jpg'
+import imgPortafolio from './assets/fotoFinal.jpg'
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
