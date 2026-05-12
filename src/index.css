@@ -77,3 +77,49 @@ section {
     box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
     transform: scale(1.1);
   }
+
+  /* Línea de tiempo */
+.timeline-container {
+    position: relative;
+  }
+  
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, #3b82f6, transparent);
+  }
+  
+  @media (min-width: 768px) {
+    .timeline-container::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .timeline-item {
+    transition: all 0.4s ease;
+  }
+  
+  .timeline-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .timeline-dot {
+    box-shadow: 0 0 15px #3b82f6;
+  }
+
+  /* Navbar con Glow */
+.nav-glow {
+    border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px -5px rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  /* Efecto opcional: que brille más cuando el mouse anda cerca del logo */
+  .nav-logo-glow:hover {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+  }

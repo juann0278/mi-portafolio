@@ -69,20 +69,26 @@ function App() {
     <div className="min-h-screen bg-slate-900 text-white font-sans selection:bg-blue-500/30">
       
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800 z-50">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#" className="text-blue-500 font-bold text-xl tracking-tighter hover:text-blue-400 transition-colors">
-            JA
-          </a>
-          <div className="flex gap-6 md:gap-8 text-xs md:text-sm font-medium text-slate-400">
-            <a href="#proyectos" className="hover:text-blue-400 transition-colors">Proyectos</a>
-            <a href="#habilidades" className="hover:text-blue-400 transition-colors">Habilidades</a>
-            <a href="#experiencia" className="hover:text-blue-400 transition-colors">Experiencia</a>
-            <a href="#educacion" className="hover:text-blue-400 transition-colors">Educación</a>
-            <a href="#contacto" className="text-blue-500 hover:text-blue-400 transition-colors font-bold">Contacto</a>
-          </div>
-        </div>
-      </nav>
+<nav className="fixed top-0 left-0 w-full bg-slate-900/90 backdrop-blur-md z-50 nav-glow">
+  <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="#" className="text-blue-500 font-bold text-2xl tracking-tighter nav-logo-glow transition-all">
+      JA
+    </a>
+    {/* Agregamos items-center para que todos los links se alineen al medio verticalmente */}
+    <div className="flex items-center gap-4 md:gap-8 text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">
+      <a href="#proyectos" className="hover:text-blue-400 hover:scale-105 transition-all">Proyectos</a>
+      <a href="#habilidades" className="hover:text-blue-400 hover:scale-105 transition-all">Habilidades</a>
+      <a href="#trayectoria" className="hover:text-blue-400 hover:scale-105 transition-all">Trayectoria</a>
+      
+      <a 
+        href="#contacto" 
+        className="text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full hover:bg-blue-500 hover:text-white transition-all flex items-center justify-center"
+      >
+        Contacto
+      </a>
+    </div>
+  </div>
+</nav>
 
       {/* HERO SECTION */}
       <header className="max-w-4xl mx-auto text-center py-32 px-6 flex flex-col items-center">
@@ -234,41 +240,57 @@ function App() {
   </div>
 </section>
 
-        {/* EXPERIENCIA */}
-        <section id="experiencia" className="pt-10">
-          <h2 className="text-3xl font-bold mb-10 border-b border-slate-800 pb-4 text-blue-400">Experiencia Laboral</h2>
-          <div className="space-y-8">
-            {experiencia.map((exp, i) => (
-              <div key={i} className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700/50">
-                <div className="flex flex-col md:flex-row justify-between mb-6">
-                  <div>
-                    <h3 className="text-xl font-bold text-white uppercase tracking-tight">{exp.puesto}</h3>
-                    <p className="text-blue-500 font-medium">{exp.lugar}</p>
-                  </div>
-                  <span className="text-slate-400 font-mono text-sm mt-2 md:mt-0">{exp.periodo}</span>
-                </div>
-                <ul className="list-disc list-inside space-y-3 text-slate-400">
-                  {exp.puntos.map((p, idx) => <li key={idx} className="leading-relaxed">{p}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* SECCIÓN UNIFICADA: TRAYECTORIA */}
+<section id="trayectoria" className="pt-10">
+  <h2 className="text-3xl font-bold mb-16 border-b border-slate-800 pb-4 text-blue-400">Educación y Experiencia</h2>
+  
+  <div className="timeline-container space-y-12">
+    
+    {/* EDUCACIÓN (UNICEN) */}
+    {educacion.map((edu, i) => (
+      <div key={i} className="timeline-item relative pl-8 md:pl-0 md:flex md:justify-between md:items-center group">
+        <div className="hidden md:block w-5/12 text-right pr-8 text-slate-500 font-mono text-sm">
+          {edu.periodo}
+        </div>
+        
+        {/* El punto brillante */}
+        <div className="absolute left-[-5px] md:left-1/2 md:translate-x-[-50%] top-0 w-3 h-3 bg-blue-500 rounded-full timeline-dot z-10 group-hover:scale-150 transition-transform"></div>
+        
+        <div className="md:w-5/12 bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 backdrop-blur-sm group-hover:border-blue-500/50 transition-all">
+          <span className="md:hidden block text-blue-500 font-mono text-xs mb-2">{edu.periodo}</span>
+          <h3 className="text-xl font-bold text-white">{edu.titulo}</h3>
+          <p className="text-blue-500 font-medium text-sm mt-1">{edu.institucion}</p>
+          <p className="text-slate-400 mt-4 text-sm leading-relaxed">{edu.detalles}</p>
+        </div>
+      </div>
+    ))}
 
-        {/* EDUCACIÓN */}
-        <section id="educacion" className="pt-10">
-          <h2 className="text-3xl font-bold mb-10 border-b border-slate-800 pb-4 text-blue-400">Educación</h2>
-          {educacion.map((edu, i) => (
-            <div key={i} className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700/50 flex flex-col md:flex-row justify-between items-start gap-6">
-              <div>
-                <h3 className="text-xl font-bold text-white">{edu.titulo}</h3>
-                <p className="text-blue-500 font-medium mt-1">{edu.institucion}</p>
-                <p className="text-slate-400 mt-4 leading-relaxed max-w-2xl">{edu.detalles}</p>
-              </div>
-              <span className="bg-slate-900 text-slate-400 px-4 py-1 rounded-full text-sm font-mono border border-slate-700">{edu.periodo}</span>
-            </div>
-          ))}
-        </section>
+    {/* EXPERIENCIA (Ventas) */}
+    {experiencia.map((exp, i) => (
+      <div key={i} className="timeline-item relative pl-8 md:pl-0 md:flex md:justify-between md:items-center flex-row-reverse group">
+        <div className="hidden md:block w-5/12 text-left pl-8 text-slate-500 font-mono text-sm">
+          {exp.periodo}
+        </div>
+        
+        <div className="absolute left-[-5px] md:left-1/2 md:translate-x-[-50%] top-0 w-3 h-3 bg-blue-500 rounded-full timeline-dot z-10 group-hover:scale-150 transition-transform"></div>
+        
+        <div className="md:w-5/12 bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 backdrop-blur-sm group-hover:border-blue-500/50 transition-all">
+          <span className="md:hidden block text-blue-500 font-mono text-xs mb-2">{exp.periodo}</span>
+          <h3 className="text-xl font-bold text-white">{exp.puesto}</h3>
+          <p className="text-blue-400 font-medium text-sm mt-1">{exp.lugar}</p>
+          <ul className="mt-4 space-y-2">
+            {exp.puntos.map((p, idx) => (
+              <li key={idx} className="text-slate-400 text-xs flex items-start gap-2">
+                <span className="text-blue-500 mt-1">▹</span> {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+
+  </div>
+</section>
 
         {/* CONTACTO FINAL */}
         <section id="contacto" className="pt-20 border-t border-slate-800 text-center">
