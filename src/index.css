@@ -146,29 +146,36 @@ section {
 }
 
 /* --- PUNTERO CUSTOM --- */
+/* Por defecto, el cursor está oculto */
 .custom-cursor {
-    width: 25px;
-    height: 25px;
-    background: rgba(59, 130, 246, 0.2);
-    border: 1px solid rgba(59, 130, 246, 0.4);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 50;
-    transition: transform 0.15s ease-out, background 0.3s ease;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: none;
 }
 
-/* Ocultamos el puntero original solo si hay mouse */
+/* Solo se activa y se muestra en dispositivos con puntero preciso (Mouse/Trackpad) */
 @media (pointer: fine) {
-    body {
-        cursor: none;
-    }
+  .custom-cursor {
+      display: flex;
+      width: 25px;
+      height: 25px;
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 50;
+      transition: transform 0.15s ease-out, background 0.3s ease;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+      align-items: center;
+      justify-content: center;
+  }
 }
 
+/* Ocultamos el puntero original solo si hay mouse para no romper la estética */
+@media (pointer: fine) {
+  body {
+      cursor: none;
+  }
+}
 /* --- EFECTOS DE HOVER UNIFICADOS (BOTONES Y LINKS) --- */
 /* Agrupamos todos los que deben "saltar" para que no haya reglas sueltas */
 .flex-wrap a, 
