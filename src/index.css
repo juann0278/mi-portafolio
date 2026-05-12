@@ -112,14 +112,86 @@ section {
     box-shadow: 0 0 15px #3b82f6;
   }
 
-  /* Navbar con Glow */
-.nav-glow {
-    border-bottom: 1px solid rgba(59, 130, 246, 0.3);
-    box-shadow: 0 4px 20px -5px rgba(59, 130, 246, 0.2);
-    transition: all 0.3s ease;
-  }
+  .nav-glow {
+    background: rgba(15, 23, 42, 0.7); /* Fondo traslúcido */
+    backdrop-filter: blur(12px); /* El efecto de vidrio */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
   
   /* Efecto opcional: que brille más cuando el mouse anda cerca del logo */
   .nav-logo-glow:hover {
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+  }
+
+  @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Para que los elementos no parpadeen antes de la animación */
+.reveal-hidden {
+    opacity: 0;
+}
+
+/* Puntero Custom */
+.custom-cursor {
+    width: 25px;
+    height: 25px;
+    background: rgba(59, 130, 246, 0.2); /* Súper transparente */
+    border: 1px solid rgba(59, 130, 246, 0.4); /* Un borde finito */
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 50; /* Lo bajamos un poco */
+    transition: transform 0.15s ease-out, background 0.3s ease;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Escondemos el puntero real si queremos, o lo dejamos para que sea el "centro" */
+  body {
+    cursor: none; /* Esto oculta la flechita blanca original */
+  }
+  
+  /* Para que los botones y links se sientan vivos */
+  a:hover ~ .custom-cursor, 
+  button:hover ~ .custom-cursor {
+    transform: scale(2.5);
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid #3b82f6;
+  }
+
+  button, a {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  }
+  
+  button:hover, a:hover {
+    transform: translateY(-5px) scale(1.02);
+    filter: brightness(1.1);
+  }
+
+  .text-animate-gradient {
+    background: linear-gradient(to right, #3b82f6, #60a5fa, #3b82f6);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+  }
+  
+  @keyframes shine {
+    to { background-position: 200% center; }
   }
