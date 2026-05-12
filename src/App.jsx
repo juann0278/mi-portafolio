@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import './index.css'
 
-
 // IMPORTACIÓN DE IMÁGENES 
 import fotoPerfil from './assets/perfil.jpg'
 import imgMonopatines from './assets/monopatin.jpg'
@@ -12,6 +11,7 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
+  // --- 1. BARRA DE PROGRESO ---
   useEffect(() => {
     const updateScroll = () => {
       const currentScroll = window.scrollY;
@@ -22,37 +22,33 @@ function App() {
     return () => window.removeEventListener("scroll", updateScroll);
   }, []);
 
+  // --- 2. CURSOR CUSTOM ---
   useEffect(() => {
     const mouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
-
-    useEffect(() => {
-      const observerOptions = {
-        threshold: 0.1, // Se activa cuando el 10% de la card es visible
-      };
-    
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('card-reveal-visible');
-          }
-        });
-      }, observerOptions);
-    
-      // Seleccionamos todas las cards que tengan la clase 'card-reveal'
-      const cards = document.querySelectorAll('.card-reveal');
-      cards.forEach((card) => observer.observe(card));
-    
-      return () => observer.disconnect();
-    }, []);
-
     window.addEventListener("mousemove", mouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", mouseMove);
-    };
+    return () => window.removeEventListener("mousemove", mouseMove);
   }, []);
+
+  // --- 3. REVEAL DE CARDS (El que estaba mal metido) ---
+  useEffect(() => {
+    const cards = document.querySelectorAll('.card-reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('card-reveal-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
+
   // Estado para controlar qué proyecto muestra la imagen 
   const [proyectoRevelado, setProyectoRevelado] = useState(null);
 

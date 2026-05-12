@@ -220,15 +220,17 @@ button:hover ~ .custom-cursor {
 }
 
 
-/* Estado inicial: Invisible y desplazada hacia abajo */
+/* Estado inicial: un poco transparente pero que se vea algo si falla el JS */
 .card-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  /* Esto asegura que el elemento ocupe espacio aunque sea invisible */
+  visibility: visible; 
 }
 
-/* Estado final: Visible y en su lugar original */
+/* Estado cuando el JS lo detecta */
 .card-reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
