@@ -5,7 +5,8 @@ import './index.css'
 import fotoPerfil from './assets/perfil.jpg'
 import imgMonopatines from './assets/monopatin.jpg'
 import imgAldesal from './assets/aldesal.jpg'
-import imgPortafolio from './assets/fotoFinal.jpg'
+import imgPortafolio from './assets/portafolioFinal.jpg'
+import fondoDev from './assets/fondo2.jpg'
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -146,66 +147,80 @@ function App() {
       </nav>
 
       {/* HERO SECTION */}
-      {/* HERO SECTION */}
-      <header className="reveal max-w-4xl mx-auto text-center py-32 px-6 flex flex-col items-center">
-        <div className="relative group mb-8">
-          {/* Resplandor de fondo */}
-          <div className="absolute inset-0 rounded-full bg-blue-500/5 blur-3xl group-hover:bg-blue-500/20 transition-all duration-300 pointer-events-none opacity-0 group-hover:opacity-100 scale-125"></div>
 
-          {/* Contenedor de la foto */}
-          <div className="relative w-56 h-56 rounded-full border-4 border-blue-500 overflow-hidden shadow-2xl transition-all duration-300 ease-out group-hover:border-white shadow-blue-500/20 group-hover:shadow-blue-500/50 cursor-pointer will-change-transform">
-            <img
-              src={fotoPerfil}
-              alt="Juan Altamiranda"
-              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 will-change-transform"
-            />
-          </div>
+      <header className="relative w-full min-h-[600px] overflow-hidden py-32 px-6 flex flex-col items-center">
+        {/* CAPA DE IMAGEN DE FONDO */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={fondoDev}
+            className="w-full h-full object-cover opacity-10 grayscale contrast-125"
+            alt="background"
+          />
+          {/* Gradiente más suave para que no tape la foto */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/60 to-slate-900"></div>
         </div>
 
-        <h1 className="text-6xl md:text-7xl font-extrabold mb-4 tracking-tight text-white">
-          Juan <span className="text-animate-gradient">Altamiranda</span>
-        </h1>
-        <p className="text-2xl text-slate-400 font-light max-w-2xl mx-auto mb-8">
-          Fullstack Developer
-        </p>
-        <p className="text-slate-500 max-w-xl mx-auto mb-10 leading-relaxed text-center">
-          Soy una persona honesta y responsable, con un fuerte compromiso para cumplir objetivos.
-          Mi curiosidad me impulsa a buscar constantemente nuevos conocimientos.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <a
-            href="https://www.linkedin.com/in/juan-altamiranda-b93859296/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-2xl font-bold transition-all shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1 text-white no-underline flex items-center gap-2"
-          >
-            LinkedIn
-          </a>
+        {/* CONTENIDO PRINCIPAL */}
+        <div className="relative z-10 reveal max-w-4xl mx-auto text-center flex flex-col items-center">
+          <div className="relative group mb-8">
+            {/* Resplandor de fondo de la foto */}
+            <div className="absolute inset-0 rounded-full bg-blue-500/5 blur-3xl group-hover:bg-blue-500/20 transition-all duration-300 pointer-events-none opacity-0 group-hover:opacity-100 scale-125"></div>
 
-          <a
-            href="https://github.com/juann0278"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-slate-800 hover:bg-slate-700 px-8 py-4 rounded-2xl font-bold border border-slate-700 transition-all hover:-translate-y-1 hover:border-slate-500 text-white no-underline flex items-center gap-2"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-            GitHub
-          </a>
+            {/* Contenedor de la foto */}
+            <div className="relative w-56 h-56 rounded-full border-4 border-blue-500 overflow-hidden shadow-2xl transition-all duration-300 ease-out group-hover:border-white shadow-blue-500/20 group-hover:shadow-blue-500/50 cursor-pointer will-change-transform">
+              <img
+                src={fotoPerfil}
+                alt="Juan Altamiranda"
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 will-change-transform"
+              />
+            </div>
+          </div>
 
-          <a
-            href="https://wa.me/542494641010"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-green-600 hover:bg-green-500 px-8 py-4 rounded-2xl font-bold transition-all shadow-lg hover:shadow-green-500/40 hover:-translate-y-1 text-white no-underline flex items-center gap-2"
-          >
-            WhatsApp
-          </a>
-          <a
-            href="mailto:juanaltamiranda2003@hotmail.com"
-            className="bg-slate-800 hover:bg-slate-700 px-8 py-4 rounded-2xl font-bold border border-slate-700 transition-all hover:-translate-y-1 hover:border-slate-500 text-white no-underline flex items-center gap-2"
-          >
-            Email
-          </a>
+          <h1 className="text-6xl md:text-7xl font-extrabold mb-4 tracking-tight text-white">
+            Juan <span className="text-animate-gradient">Altamiranda</span>
+          </h1>
+          <p className="text-2xl text-slate-400 font-light max-w-2xl mx-auto mb-8">
+            Fullstack Developer
+          </p>
+          <p className="text-slate-500 max-w-xl mx-auto mb-10 leading-relaxed text-center">
+            Soy una persona honesta y responsable, con un fuerte compromiso para cumplir objetivos.
+            Mi curiosidad me impulsa a buscar constantemente nuevos conocimientos.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/juan-altamiranda-b93859296/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-2xl font-bold transition-all shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1 text-white no-underline flex items-center gap-2"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://github.com/juann0278"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-800 hover:bg-slate-700 px-8 py-4 rounded-2xl font-bold border border-slate-700 transition-all hover:-translate-y-1 hover:border-slate-500 text-white no-underline flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+              GitHub
+            </a>
+
+            <a
+              href="https://wa.me/542494641010"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-600 hover:bg-green-500 px-8 py-4 rounded-2xl font-bold transition-all shadow-lg hover:shadow-green-500/40 hover:-translate-y-1 text-white no-underline flex items-center gap-2"
+            >
+              WhatsApp
+            </a>
+            <a
+              href="mailto:juanaltamiranda2003@hotmail.com"
+              className="bg-slate-800 hover:bg-slate-700 px-8 py-4 rounded-2xl font-bold border border-slate-700 transition-all hover:-translate-y-1 hover:border-slate-500 text-white no-underline flex items-center gap-2"
+            >
+              Email
+            </a>
+          </div>
         </div>
       </header>
       {/* MAIN CONTENT */}
