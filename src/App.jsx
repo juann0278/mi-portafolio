@@ -130,12 +130,12 @@ function App() {
       </nav>
 
       {/* HERO SECTION */}
-    {/* HERO SECTION */}
-    <header className="reveal max-w-4xl mx-auto text-center py-32 px-6 flex flex-col items-center">
+      {/* HERO SECTION */}
+      <header className="reveal max-w-4xl mx-auto text-center py-32 px-6 flex flex-col items-center">
         <div className="relative group mb-8">
           {/* Resplandor de fondo */}
           <div className="absolute inset-0 rounded-full bg-blue-500/5 blur-3xl group-hover:bg-blue-500/20 transition-all duration-300 pointer-events-none opacity-0 group-hover:opacity-100 scale-125"></div>
-          
+
           {/* Contenedor de la foto */}
           <div className="relative w-56 h-56 rounded-full border-4 border-blue-500 overflow-hidden shadow-2xl transition-all duration-300 ease-out group-hover:border-white shadow-blue-500/20 group-hover:shadow-blue-500/50 cursor-pointer will-change-transform">
             <img

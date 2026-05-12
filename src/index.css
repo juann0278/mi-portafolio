@@ -145,64 +145,69 @@ section {
     opacity: 0;
 }
 
-/* Puntero Custom */
+/* --- PUNTERO CUSTOM --- */
 .custom-cursor {
     width: 25px;
     height: 25px;
-    background: rgba(59, 130, 246, 0.2); /* Súper transparente */
-    border: 1px solid rgba(59, 130, 246, 0.4); /* Un borde finito */
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
-    z-index: 50; /* Lo bajamos un poco */
+    z-index: 50;
     transition: transform 0.15s ease-out, background 0.3s ease;
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  /* Escondemos el puntero real si queremos, o lo dejamos para que sea el "centro" */
-  body {
-    cursor: none; /* Esto oculta la flechita blanca original */
-  }
-  
-  /* Para que los botones y links se sientan vivos */
-  a:hover ~ .custom-cursor, 
-  button:hover ~ .custom-cursor {
+}
+
+/* Ocultamos el puntero original solo si hay mouse */
+@media (pointer: fine) {
+    body {
+        cursor: none;
+    }
+}
+
+/* --- EFECTOS DE HOVER UNIFICADOS (BOTONES Y LINKS) --- */
+/* Agrupamos todos los que deben "saltar" para que no haya reglas sueltas */
+.flex-wrap a, 
+footer a, 
+.nav-glow a,
+button {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flex-wrap a:hover, 
+footer a:hover, 
+.nav-glow a:hover,
+button:hover {
+    transform: translateY(-5px) scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* Efecto para el puntero custom cuando toca un link */
+a:hover ~ .custom-cursor, 
+button:hover ~ .custom-cursor {
     transform: scale(2.5);
     background: rgba(59, 130, 246, 0.2);
     border: 1px solid #3b82f6;
-  }
-
-  /* Solo aplicamos el efecto de "salto" a los botones del Hero y del Footer */
-.flex-wrap a, footer a {
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.flex-wrap a:hover, footer a:hover {
-  transform: translateY(-5px) scale(1.02);
-  filter: brightness(1.1);
-}
-
-/* Para la foto de perfil, forzamos que no haya saltos raros */
+/* --- FOTO DE PERFIL (Para que no salte) --- */
 .group div {
-  transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 }
-  
-  button:hover, a:hover {
-    transform: translateY(-5px) scale(1.02);
-    filter: brightness(1.1);
-  }
 
-  .text-animate-gradient {
+/* --- GRADIENTE ANIMADO DEL NOMBRE --- */
+.text-animate-gradient {
     background: linear-gradient(to right, #3b82f6, #60a5fa, #3b82f6);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 3s linear infinite;
-  }
-  
-  @keyframes shine {
+}
+
+@keyframes shine {
     to { background-position: 200% center; }
-  }
+}
