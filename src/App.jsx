@@ -130,29 +130,28 @@ function App() {
       </nav>
 
       {/* HERO SECTION */}
-      <header className="reveal max-w-4xl mx-auto text-center py-32 px-6 flex flex-col items-center">
-  <div className="relative group mb-8">
-    {/* CAPA 1 (FONDO): Un resplandor sutil que NO interfiere */}
-    <div className="absolute inset-0 rounded-full bg-blue-500/5 blur-3xl group-hover:bg-blue-500/10 transition-opacity duration-700 pointer-events-none opacity-0 group-hover:opacity-100 scale-125"></div>
-    
-    {/* CAPA 2 (IMAGEN): Donde ocurre la magia del hover */}
-    {/* Aquí eliminé group-hover:scale-105 y agregué will-change-transform */}
-    <div className="relative w-56 h-56 rounded-full border-4 border-blue-500 overflow-hidden shadow-2xl transition-all duration-700 ease-out group-hover:border-white shadow-blue-500/20 group-hover:shadow-blue-500/50 cursor-pointer will-change-transform">
-      <img
-        src={fotoPerfil}
-        alt="Juan Altamiranda"
-        {/* Usamos will-change-transform para activar la aceleración de hardware */}
-        className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110 will-change-transform"
-      />
-    </div>
-  </div>
+    {/* HERO SECTION */}
+    <header className="reveal max-w-4xl mx-auto text-center py-32 px-6 flex flex-col items-center">
+        <div className="relative group mb-8">
+          {/* Resplandor de fondo */}
+          <div className="absolute inset-0 rounded-full bg-blue-500/5 blur-3xl group-hover:bg-blue-500/20 transition-all duration-300 pointer-events-none opacity-0 group-hover:opacity-100 scale-125"></div>
+          
+          {/* Contenedor de la foto */}
+          <div className="relative w-56 h-56 rounded-full border-4 border-blue-500 overflow-hidden shadow-2xl transition-all duration-300 ease-out group-hover:border-white shadow-blue-500/20 group-hover:shadow-blue-500/50 cursor-pointer will-change-transform">
+            <img
+              src={fotoPerfil}
+              alt="Juan Altamiranda"
+              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 will-change-transform"
+            />
+          </div>
+        </div>
 
-  <h1 className="text-6xl md:text-7xl font-extrabold mb-4 tracking-tight text-white">
-    Juan <span className="text-animate-gradient">Altamiranda</span>
-  </h1>
-  <p className="text-2xl text-slate-400 font-light max-w-2xl mx-auto mb-8">
-    Fullstack Developer
-  </p>
+        <h1 className="text-6xl md:text-7xl font-extrabold mb-4 tracking-tight text-white">
+          Juan <span className="text-animate-gradient">Altamiranda</span>
+        </h1>
+        <p className="text-2xl text-slate-400 font-light max-w-2xl mx-auto mb-8">
+          Fullstack Developer
+        </p>
         <p className="text-slate-500 max-w-xl mx-auto mb-10 leading-relaxed text-center">
           Soy una persona honesta y responsable, con un fuerte compromiso para cumplir objetivos.
           Mi curiosidad me impulsa a buscar constantemente nuevos conocimientos.
@@ -167,7 +166,6 @@ function App() {
             LinkedIn
           </a>
 
-          {/* GITHUB HERO */}
           <a
             href="https://github.com/juann0278"
             target="_blank"
