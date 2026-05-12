@@ -174,9 +174,9 @@ function App() {
               alt={p.titulo} 
               className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute bottom-4 right-4 bg-blue-600 px-4 py-2 rounded-full text-[10px] font-bold text-white uppercase tracking-widest shadow-lg group-hover:bg-blue-500 transition-colors">
-              Volver
-            </div>
+      <div className="absolute bottom-4 right-4 bg-blue-600 px-4 py-2 rounded-full text-[10px] font-bold text-white uppercase tracking-widest shadow-lg hover:bg-blue-400 hover:scale-110 transition-all duration-300">
+  Volver
+</div>
           </div>
         </div>
         
