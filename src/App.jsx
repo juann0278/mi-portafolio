@@ -138,12 +138,14 @@ function App() {
     <div 
       key={i} 
       onClick={() => setProyectoRevelado(proyectoRevelado === i ? null : i)}
-      className="perspective-1000 cursor-pointer h-[420px]"
+      className="card-container perspective-1000 cursor-pointer h-[420px] group"
     >
-      <div className={`card-inner ${proyectoRevelado === i ? 'rotate-y-180' : ''}`}>
+      <div 
+        className={`card-inner transition-all duration-700 ${proyectoRevelado === i ? 'rotate-y-180' : ''}`}
+      >
         
-        {/* LADO A: TEXTO (FRENTE) - z-index alto por defecto */}
-        <div className="card-face absolute inset-0 bg-slate-800 rounded-2xl border border-slate-700 p-8 flex flex-col shadow-xl z-20">
+        {/* LADO A: TEXTO (FRENTE) */}
+        <div className="card-face absolute inset-0 bg-slate-800 rounded-2xl border border-slate-700 p-8 flex flex-col shadow-xl z-20 group-hover:border-blue-500/50 transition-colors">
           <h3 className="text-2xl font-bold text-white mb-2">{p.titulo}</h3>
           <p className="text-blue-500 text-sm font-semibold mb-3">{p.subtitulo}</p>
           <p className="text-slate-300 text-sm mb-4 leading-relaxed">{p.descripcion}</p>
@@ -151,26 +153,28 @@ function App() {
           
           <div className="flex flex-wrap gap-2 mt-auto mb-8">
             {p.tags.map((tag, idx) => (
-              <span key={idx} className="bg-slate-900 text-blue-400 text-[9px] uppercase font-bold px-2 py-1 rounded border border-blue-500/20">{tag}</span>
+              <span key={idx} className="bg-slate-900 text-blue-400 text-[9px] uppercase font-bold px-2 py-1 rounded border border-blue-500/20 group-hover:border-blue-500/50 transition-all">
+                {tag}
+              </span>
             ))}
           </div>
 
-          <div className="absolute bottom-4 right-4 text-slate-500">
+          <div className="absolute bottom-4 right-4 text-slate-500 group-hover:text-blue-400 group-hover:scale-110 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 002-2H6a2 2 0 002 2v12a2 2 0 002 2z" />
             </svg>
           </div>
         </div>
 
-        {/* LADO B: IMAGEN (DORSO) - card-face-back asegura que se vea bien al girar */}
-        <div className="card-face card-face-back absolute inset-0 bg-slate-900 rounded-2xl border border-slate-700 overflow-hidden flex items-center justify-center z-10">
+        {/* LADO B: IMAGEN (DORSO) */}
+        <div className="card-face card-face-back absolute inset-0 bg-slate-900 rounded-2xl border border-slate-700 overflow-hidden flex items-center justify-center z-10 group-hover:border-blue-500/50 transition-colors">
           <div className="w-full h-full flex flex-col items-center justify-center">
             <img 
               src={p.imagen} 
               alt={p.titulo} 
-              className="w-full h-full object-contain p-6"
+              className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute bottom-4 right-4 bg-blue-600 px-4 py-2 rounded-full text-[10px] font-bold text-white uppercase tracking-widest">
+            <div className="absolute bottom-4 right-4 bg-blue-600 px-4 py-2 rounded-full text-[10px] font-bold text-white uppercase tracking-widest shadow-lg group-hover:bg-blue-500 transition-colors">
               Volver
             </div>
           </div>

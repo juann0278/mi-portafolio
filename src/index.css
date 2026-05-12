@@ -41,3 +41,15 @@ section {
 .card-face-back {
     transform: rotateY(180deg);
 }
+
+/* Magia de Hover */
+.card-container:hover .card-inner {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    transform: translateY(-8px);
+}
+
+/* Si la carta ya está rotada, mantenemos la rotación pero agregamos el glow */
+.card-container:hover .rotate-y-180 {
+    transform: rotateY(180deg) translateY(-8px);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+}
