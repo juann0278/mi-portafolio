@@ -27,6 +27,26 @@ function App() {
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
+    useEffect(() => {
+      const observerOptions = {
+        threshold: 0.1, // Se activa cuando el 10% de la card es visible
+      };
+    
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('card-reveal-visible');
+          }
+        });
+      }, observerOptions);
+    
+      // Seleccionamos todas las cards que tengan la clase 'card-reveal'
+      const cards = document.querySelectorAll('.card-reveal');
+      cards.forEach((card) => observer.observe(card));
+    
+      return () => observer.disconnect();
+    }, []);
+
     window.addEventListener("mousemove", mouseMove);
 
     return () => {
@@ -202,7 +222,7 @@ function App() {
               <div
                 key={i}
                 onClick={() => setProyectoRevelado(proyectoRevelado === i ? null : i)}
-                className="card-container perspective-1000 cursor-pointer h-[420px] group"
+                className="card-container card-reveal perspective-1000 cursor-pointer h-[420px] group"
               >
                 <div
                   className={`card-inner transition-all duration-700 ${proyectoRevelado === i ? 'rotate-y-180' : ''}`}

@@ -218,3 +218,17 @@ button:hover ~ .custom-cursor {
 @keyframes shine {
     to { background-position: 200% center; }
 }
+
+
+/* Estado inicial: Invisible y desplazada hacia abajo */
+.card-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Estado final: Visible y en su lugar original */
+.card-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
