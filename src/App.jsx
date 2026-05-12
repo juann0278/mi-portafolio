@@ -131,16 +131,19 @@ function App() {
 
       {/* HERO SECTION */}
       <header className="reveal max-w-4xl mx-auto text-center py-32 px-6 flex flex-col items-center">
-        <div className="relative group mb-8">
-          <div className="absolute inset-0 rounded-full bg-blue-500/10 blur-3xl group-hover:bg-blue-500/30 transition-all duration-500 scale-125"></div>
-          <div className="relative w-56 h-56 rounded-full border-4 border-blue-500 overflow-hidden shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:border-white shadow-blue-500/20 group-hover:shadow-blue-500/50 cursor-pointer will-change-transform">
-            <img
-              src={fotoPerfil}
-              alt="Juan Altamiranda"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-          </div>
-        </div>
+      <div className="relative group mb-8" style={{ isolation: 'isolate' }}>
+  {/* Brillo de fondo */}
+  <div className="absolute inset-0 rounded-full bg-blue-500/10 blur-3xl group-hover:bg-blue-500/30 transition-all duration-700 scale-125 pointer-events-none"></div>
+  
+  {/* Contenedor de la imagen */}
+  <div className="relative w-56 h-56 rounded-full border-4 border-blue-500 overflow-hidden shadow-2xl transition-all duration-500 ease-out group-hover:scale-105 group-hover:border-white shadow-blue-500/20 group-hover:shadow-blue-500/50 cursor-pointer" style={{ transformStyle: 'preserve-3d', backfaceVisibility: 'hidden' }}>
+    <img
+      src={fotoPerfil}
+      alt="Juan Altamiranda"
+      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+    />
+  </div>
+</div>
 
 
         <h1 className="text-6xl md:text-7xl font-extrabold mb-4 tracking-tight text-white">

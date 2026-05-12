@@ -175,9 +175,20 @@ section {
     border: 1px solid #3b82f6;
   }
 
-  button, a {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-  }
+  /* Solo aplicamos el efecto de "salto" a los botones del Hero y del Footer */
+.flex-wrap a, footer a {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flex-wrap a:hover, footer a:hover {
+  transform: translateY(-5px) scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* Para la foto de perfil, forzamos que no haya saltos raros */
+.group div {
+  transition: all 0.5s ease-out;
+}
   
   button:hover, a:hover {
     transform: translateY(-5px) scale(1.02);
